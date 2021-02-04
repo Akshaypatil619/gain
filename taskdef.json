@@ -4,7 +4,7 @@
         {
             "image": "%REPOSITORY_URI%:v_%BUILD_NUMBER%",
             "name": "gain",
-            "cpu": 0.25,
+            "cpu": 10,
             "memory": 256,
             "essential": true,
             "portMappings": [
