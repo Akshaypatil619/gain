@@ -26,3 +26,49 @@
             "command": [
                 ""
             ],
+            
+
+        
+           
+         
+            "disableNetworking": true,
+            "privileged": true,
+            "readonlyRootFilesystem": true,
+           
+          
+           
+            "interactive": true,
+            "pseudoTerminal": true,
+           
+            "ulimits": [
+                {
+                    "name": "locks",
+                    "softLimit": 0,
+                    "hardLimit": 0
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+					"awslogs-group": "/ecs/gain",
+					"awslogs-region": "us-east-1",
+					"awslogs-stream-prefix": "ecs"
+                }
+            }
+           
+         
+        }
+    ],
+   
+  
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    
+   
+
+    "pidMode": "task",
+    "ipcMode": "task"
+  
+   
+}
