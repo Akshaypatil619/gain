@@ -1,18 +1,33 @@
 {
-    "family": "gain",
-    "containerDefinitions": [
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "containerDefinitions": [
+    {
+      "name": "gain",
+      "image": "%REPOSITORY_URI%:v_%BUILD_NUMBER%",
+      "memory": 256,
+      "cpu": 256,
+      "essential": true,
+      "portMappings": [
         {
-            "image": "%REPOSITORY_URI%:v_%BUILD_NUMBER%",
-            "name": "gain",
-            "cpu": 0,
-            "memory": 256,
-            "essential": true,
-            "portMappings": [
-                {
-                    "containerPort": 8303,
-                    "hostPort": 0
-                }
-            ]
+          "containerPort": 8303,
+           "hostPort": 0,
+          "protocol": "tcp"
         }
-    ]
+      ],
+      "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+              "awslogs-group": "/ecs/gain",
+              "awslogs-region": "us-east-1",
+              "awslogs-stream-prefix": "ecs"
+          }
+      }
+    }
+  ],
+  "volumes": [],
+  "networkMode": "bridge",
+  "placementConstraints": [],
+  "family": "gain"
 }
