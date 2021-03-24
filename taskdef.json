@@ -2,6 +2,7 @@
   "requiresCompatibilities": [
     "EC2"
   ],
+  "family": "gain",
   "containerDefinitions": [
     {
       "name": "gain",
@@ -28,6 +29,5 @@
   ],
   "volumes": [],
   "networkMode": "bridge",
-  "placementConstraints": [],
-  "family": "gain"
-}
+  "placementConstraints": []
+ }
