@@ -1,18 +1,74 @@
 {
     "family": "gain",
+    "taskRoleArn": ["arn:aws:iam::834618721642:role/ecsTaskExecutionRole","arn:aws:iam::834618721642:role/AWSServiceRoleForECS" ],
+    "executionRoleArn": "arn:aws:iam::834618721642:role/ecsTaskExecutionRole",
+    "networkMode": "bridge",
     "containerDefinitions": [
         {
-            "image": "%REPOSITORY_URI%:v_%BUILD_NUMBER%",
             "name": "gain",
+            "image": "%REPOSITORY_URI%:v_%BUILD_NUMBER%",
+            
             "cpu": 0,
-            "memory": 256,
-            "essential": true,
+            "memory": 300,
+            "memoryReservation": 200,
+            
             "portMappings": [
                 {
                     "containerPort": 8303,
-                    "hostPort": 0
+                    "hostPort": 0,
+                    "protocol": "tcp"
                 }
-            ]
+            ],
+            "essential": true,
+            "entryPoint": [
+                ""
+            ],
+            "command": [
+                ""
+            ],
+            
+
+        
+           
+         
+            "disableNetworking": true,
+            "privileged": true,
+            "readonlyRootFilesystem": true,
+           
+          
+           
+            "interactive": true,
+            "pseudoTerminal": true,
+           
+            "ulimits": [
+                {
+                    "name": "locks",
+                    "softLimit": 0,
+                    "hardLimit": 0
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+					"awslogs-group": "/ecs/gain",
+					"awslogs-region": "us-east-1",
+					"awslogs-stream-prefix": "ecs"
+                }
+            }
+           
+         
         }
-    ]
+    ],
+   
+  
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    
+   
+
+    "pidMode": "task",
+    "ipcMode": "task"
+  
+   
 }
