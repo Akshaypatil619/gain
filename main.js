@@ -194,6 +194,10 @@ app.use(get_activity_details);
 
 app.use("/api/", routes.get());
 
+app.get('/api/test', (req, res) => {
+    reply(true);
+})
+
 app.use(function (req, res) {
     res.header(404);
     res.json({ "status": false, status_code: 404, message: messages.api_invalid });
